@@ -54,7 +54,7 @@ const Home = () => {
                 <h2 className='text-center pt-10 text-3xl lg:text-5xl text-white font-bold'>Forecast the Weather in your City</h2>
                 <form onSubmit={handleSubmit} className='py-8 flex  justify-center '>
                    <div className='flex flex-col sm:flex-row justify-center w-4/5 sm:w-3/4 lg:w-3/5 '>
-                        <input onBlur={handleCityName} onKeyPress={handleKeyPress} className='bg-transparent border-2 text-white px-2 py-1 rounded w-full' type="text" placeholder='Search Weather by City Name'/>
+                        <input onChange={handleCityName} onKeyPress={handleKeyPress} className='bg-transparent border-2 text-white px-2 py-1 rounded w-full' type="text" placeholder='Search Weather by City Name'/>
                         <input className='text-white text-center bg-green-600 text-xl px-3 py-1 font-bold rounded w-24' type="submit" value="Search" />
                    </div>
                 </form>
