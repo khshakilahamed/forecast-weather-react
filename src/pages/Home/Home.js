@@ -8,6 +8,7 @@ const Home = () => {
     const [cityCurrentWeather, setCityCurrentWeather] = useState({});
     const [fiveDaysWeather, setFiveDaysWeather] = useState([]);
 
+    // const key = process.env.REACT_APP_MY_API_KEY;
     const key = process.env.REACT_APP_MY_API_KEY;
 
     const currentWeather = (cityKey) =>{
@@ -29,7 +30,6 @@ const Home = () => {
 
     const handleSubmit = (e) =>{
         e.preventDefault();
-        console.log(cityName)
 
         fetch(`http://dataservice.accuweather.com/locations/v1/cities/search?apikey=${key}&q=${cityName}`)
         .then(res=>res.json())

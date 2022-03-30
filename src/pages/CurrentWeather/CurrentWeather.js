@@ -2,10 +2,8 @@ import React from 'react';
 import './CurrentWeather.css'
 
 const CurrentWeather = ({currentWeather, cityName}) => {
-    console.log(currentWeather);
     const {IsDayTime, Temperature, WeatherText, WeatherIcon, LocalObservationDateTime} = currentWeather || {};
     const {Value} = Temperature?.Metric || {};
-    const date = new Date(LocalObservationDateTime).toLocaleDateString();
     
     return (
         <div className='mx-5 sm:mx-10 md:mx-20 lg:mx-80 current-weather-container rounded-xl'>
