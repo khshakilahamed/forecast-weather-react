@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import ForecastWeather from '../ForecastWeather/ForecastWeather';
-import CurrentWeather from './CurrentWeather/CurrentWeather';
+import CurrentWeather from '../CurrentWeather/CurrentWeather';
 import './Home.css'
 
 const Home = () => {

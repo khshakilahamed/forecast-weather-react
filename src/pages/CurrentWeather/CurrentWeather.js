@@ -16,7 +16,7 @@ const CurrentWeather = ({currentWeather, cityName}) => {
                     <p className='text-2xl font-bold text-center'>{WeatherText}</p>
                     <div className='flex justify-center'>
                         {
-                            WeatherIcon && <img className='w-20 h-20 bg-red-400 rounded-full' src={require(`../../../images/icons/${WeatherIcon}.svg`)} alt="" />
+                            WeatherIcon && <img className='w-20 h-20 bg-red-400 rounded-full' src={require(`../../images/icons/${WeatherIcon}.svg`)} alt="" />
                         }
                     </div>
                     <div className='text-center'>
