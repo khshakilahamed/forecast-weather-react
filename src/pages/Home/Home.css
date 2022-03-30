@@ -1,0 +1,8 @@
+.main-container {
+  background: linear-gradient(rgb(0, 0, 0, 0.5), rgb(0, 0, 0, 0.5)),
+    url("./../../images/weather-bg.jpg");
+  /* height: 1200px; */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
