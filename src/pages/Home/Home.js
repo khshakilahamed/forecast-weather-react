@@ -5,6 +5,7 @@ import './Home.css'
 
 const Home = () => {
     const [cityName, setCityName] = useState('');
+    const [passCityName, setPassCityName] = useState('');
     const [cityCurrentWeather, setCityCurrentWeather] = useState({});
     const [fiveDaysWeather, setFiveDaysWeather] = useState([]);
 
@@ -35,10 +36,15 @@ const Home = () => {
         .then(res=>res.json())
         .then(data =>{
             const cityKey = data[0].Key;
+            setPassCityName(cityName)
             currentWeather(cityKey);
             handleFiveDaysWeather(cityKey);
             e.target.reset();
-        });
+        })
+        .catch(error => {
+            alert('Nothing found. Please with the different name.');
+        })
+        ;
     };
 
 
@@ -55,13 +61,13 @@ const Home = () => {
                 <form onSubmit={handleSubmit} className='py-8 flex  justify-center '>
                    <div className='flex flex-col sm:flex-row justify-center w-4/5 sm:w-3/4 lg:w-3/5 '>
                         <input onChange={handleCityName} onKeyPress={handleKeyPress} className='bg-transparent border-2 text-white px-2 py-1 rounded w-full' type="text" placeholder='Search Weather by City Name'/>
-                        <input className='text-white text-center bg-green-600 text-xl px-3 py-1 font-bold rounded w-24' type="submit" value="Search" />
+                        <input className='text-white text-center bg-green-600 text-xl px-3 py-1 font-bold rounded w-24 cursor-pointer' type="submit" value="Search" />
                    </div>
                 </form>
             </div>
             {
                 // cityCurrentWeather.EpochTime && 
-                cityCurrentWeather.EpochTime &&  <CurrentWeather currentWeather={cityCurrentWeather} cityName={cityName}></CurrentWeather>
+                cityCurrentWeather.EpochTime &&  <CurrentWeather currentWeather={cityCurrentWeather} cityName={passCityName}></CurrentWeather>
             }
             <div className='mx-20 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-3 gap-4 xl:my-10'>
                 {
