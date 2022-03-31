@@ -2,12 +2,15 @@ import React, { useState } from 'react';
 import ForecastWeather from '../ForecastWeather/ForecastWeather';
 import CurrentWeather from '../CurrentWeather/CurrentWeather';
 import './Home.css'
+import swal from 'sweetalert';
 
 const Home = () => {
     const [cityName, setCityName] = useState('');
-    const [passCityName, setPassCityName] = useState('');
+    const [passCityName, setPassCityName] = useState({});
     const [cityCurrentWeather, setCityCurrentWeather] = useState({});
     const [fiveDaysWeather, setFiveDaysWeather] = useState([]);
+
+    // console.log(fiveDaysWeather)
 
     // const key = process.env.REACT_APP_MY_API_KEY;
     const key = process.env.REACT_APP_MY_API_KEY;
@@ -36,13 +39,15 @@ const Home = () => {
         .then(res=>res.json())
         .then(data =>{
             const cityKey = data[0].Key;
-            setPassCityName(cityName)
+            const cityInfo = {cityLocalizedName:data[0].LocalizedName, countryLocalizedName:data[0].Country.LocalizedName};
+            setPassCityName(cityInfo)
             currentWeather(cityKey);
             handleFiveDaysWeather(cityKey);
             e.target.reset();
         })
         .catch(error => {
-            alert('Nothing found. Please with the different name.');
+            // alert('Nothing found. Please with the different name.');
+            swal("Error!", "Please, write a valid name of city!", "error");
         })
         ;
     };
@@ -71,7 +76,7 @@ const Home = () => {
             }
             <div className='mx-20 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 py-3 gap-4 xl:my-10'>
                 {
-                    fiveDaysWeather.slice(1, fiveDaysWeather.length).map(weather => <ForecastWeather weather={weather} key={Math.random()}></ForecastWeather>)
+                    fiveDaysWeather.slice(1, fiveDaysWeather.length).map(weather => <ForecastWeather weather={weather} cityName={passCityName} key={Math.random()}></ForecastWeather>)
                 }
             </div>
         </div>

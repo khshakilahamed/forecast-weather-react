@@ -1,7 +1,9 @@
 import React from 'react';
 
-const ForecastWeather = ({weather}) => {
+const ForecastWeather = ({weather, cityName}) => {
     const {Temperature, Day, Night} = weather || {};
+    const {cityLocalizedName, countryLocalizedName} = cityName || {};
+
     const date = weather.Date;
     const dayPhrase = Day.IconPhrase;
     const nightPhrase = Night.IconPhrase;
@@ -13,8 +15,8 @@ const ForecastWeather = ({weather}) => {
 
     return (
         <div className='text-center text-white bg-gray-500 py-5 rounded-xl space-y-4'>
+            <p className='text-red-700 font-bold'>{cityLocalizedName}</p>
             <p>{day}</p>
-            
             <div className='flex justify-between items-center space-x-2 xl:space-y-10'>
                 <div className='w-1/2 space-y-3'>
                     <p>Day</p>
